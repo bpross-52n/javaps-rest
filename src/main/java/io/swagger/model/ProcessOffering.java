@@ -26,7 +26,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.model.Process;
+import io.swagger.model.InputDescription;
+import io.swagger.model.JobControlOptions;
+import io.swagger.model.Link;
+import io.swagger.model.OutputDescription;
+import io.swagger.model.ProcessSummary;
+import io.swagger.model.TransmissionMode;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -35,30 +42,68 @@ import javax.validation.constraints.*;
  * ProcessOffering
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
-public class ProcessOffering   {
-  @JsonProperty("process")
-  private Process process = null;
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-06-24T08:04:08.727Z[GMT]")
+public class ProcessOffering extends ProcessSummary  {
+  @JsonProperty("inputs")
+  @Valid
+  private List<InputDescription> inputs = null;
 
-  public ProcessOffering process(Process process) {
-    this.process = process;
+  @JsonProperty("outputs")
+  @Valid
+  private List<OutputDescription> outputs = null;
+
+  public ProcessOffering inputs(List<InputDescription> inputs) {
+    this.inputs = inputs;
+    return this;
+  }
+
+  public ProcessOffering addInputsItem(InputDescription inputsItem) {
+    if (this.inputs == null) {
+      this.inputs = new ArrayList<InputDescription>();
+    }
+    this.inputs.add(inputsItem);
     return this;
   }
 
   /**
-   * Get process
-   * @return process
+   * Get inputs
+   * @return inputs
   **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
+  @ApiModelProperty(value = "")
   @Valid
-  public Process getProcess() {
-    return process;
+  public List<InputDescription> getInputs() {
+    return inputs;
   }
 
-  public void setProcess(Process process) {
-    this.process = process;
+  public void setInputs(List<InputDescription> inputs) {
+    this.inputs = inputs;
+  }
+
+  public ProcessOffering outputs(List<OutputDescription> outputs) {
+    this.outputs = outputs;
+    return this;
+  }
+
+  public ProcessOffering addOutputsItem(OutputDescription outputsItem) {
+    if (this.outputs == null) {
+      this.outputs = new ArrayList<OutputDescription>();
+    }
+    this.outputs.add(outputsItem);
+    return this;
+  }
+
+  /**
+   * Get outputs
+   * @return outputs
+  **/
+  @ApiModelProperty(value = "")
+  @Valid
+  public List<OutputDescription> getOutputs() {
+    return outputs;
+  }
+
+  public void setOutputs(List<OutputDescription> outputs) {
+    this.outputs = outputs;
   }
 
 
@@ -71,20 +116,23 @@ public class ProcessOffering   {
       return false;
     }
     ProcessOffering processOffering = (ProcessOffering) o;
-    return Objects.equals(this.process, processOffering.process);
+    return Objects.equals(this.inputs, processOffering.inputs) &&
+        Objects.equals(this.outputs, processOffering.outputs) &&
+        super.equals(o);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(process);
+    return Objects.hash(inputs, outputs, super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class ProcessOffering {\n");
-    
-    sb.append("    process: ").append(toIndentedString(process)).append("\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
+    sb.append("    outputs: ").append(toIndentedString(outputs)).append("\n");
     sb.append("}");
     return sb.toString();
   }

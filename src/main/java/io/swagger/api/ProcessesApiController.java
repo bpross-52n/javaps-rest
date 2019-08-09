@@ -26,6 +26,7 @@ import static java.util.stream.Collectors.toSet;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -205,10 +206,12 @@ public class ProcessesApiController implements ProcessesApi {
         
         Set<String> values = engine.getJobIdentifiers(owsCode).stream().map(JobId::getValue).collect(toSet());
         
-        JobCollection jobCollection = new JobCollection();        
+        JobCollection jobCollection = new JobCollection();
+        
+        ArrayList<String> jobList = (ArrayList<String>)jobCollection;
         
         for (String jobID : values) {
-            jobCollection.addJobsItem(jobID);
+            jobList.add(jobID);
         }
         
         return ResponseEntity.ok(jobCollection);

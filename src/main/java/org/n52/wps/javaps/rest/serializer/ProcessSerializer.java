@@ -100,28 +100,24 @@ public class ProcessSerializer {
     public ProcessOffering serializeProcessOffering(org.n52.shetland.ogc.wps.ProcessOffering processOffering) {
                 
         io.swagger.model.ProcessOffering serializedProcessOffering = new io.swagger.model.ProcessOffering();
-        
-        Process process = new Process();
-        
-        addProcessSummary((ProcessSummary)process, processOffering);
+                
+        addProcessSummary((ProcessSummary)serializedProcessOffering, processOffering);
         
         Link executeEndpointLink = new Link();
         
-        executeEndpointLink.setHref(serviceURL + process.getId() + "/jobs");
+        executeEndpointLink.setHref(serviceURL + serializedProcessOffering.getId() + "/jobs");
         
         executeEndpointLink.setRel("canonical");
         
         executeEndpointLink.setTitle("Execute endpoint");
         
-        process.setLinks(Collections.singletonList(executeEndpointLink));
+        serializedProcessOffering.setLinks(Collections.singletonList(executeEndpointLink));
         
         ProcessDescription processDescription = processOffering.getProcessDescription();
         
-        process.setInputs(createInputs(processDescription.getInputDescriptions()));
+        serializedProcessOffering.setInputs(createInputs(processDescription.getInputDescriptions()));
         
-        process.setOutputs(createOutputs(processDescription.getOutputDescriptions()));
-        
-        serializedProcessOffering.process(process);
+        serializedProcessOffering.setOutputs(createOutputs(processDescription.getOutputDescriptions()));        
         
         return serializedProcessOffering;
     }
@@ -547,7 +543,7 @@ public class ProcessSerializer {
     public ProcessCollection serializeProcessOfferings(Set<org.n52.shetland.ogc.wps.ProcessOffering> offerings) {
         ProcessCollection collection = new ProcessCollection();
         
-      List<ProcessSummary> processes = new ArrayList<>();
+        ArrayList<ProcessSummary> processes = (ArrayList<ProcessSummary>)collection;
       
       ProcessSummary process;
       
@@ -572,9 +568,7 @@ public class ProcessSerializer {
           
       }
       
-      collection.setProcesses(processes);
-        
-        return collection;
+      return collection;
     }
     
 }
