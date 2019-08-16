@@ -58,6 +58,8 @@ public class StatusInfoSerializer {
         
         StatusInfo serializedStatusInfo = new StatusInfo();
         
+        serializedStatusInfo.setJobID(jobId);
+        
         serializedStatusInfo.setStatus(mapStatus(statusInfo.getStatus()));
         
         Optional<Short> percentCompleted = statusInfo.getPercentCompleted();
@@ -134,7 +136,7 @@ public class StatusInfoSerializer {
     }
     
     private String createResultURL(String selfHref) {
-        return selfHref + "/result";
+        return selfHref + "/results";
     }
     
 }

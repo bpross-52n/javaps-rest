@@ -111,7 +111,7 @@ public interface ProcessesApi {
         @ApiResponse(code = 200, message = "The result of a job.", response = Result.class),
         @ApiResponse(code = 404, message = "The process with id {id} or the job with id {jobID} does not exist.", response = Exception.class),
         @ApiResponse(code = 200, message = "An error occured.", response = Exception.class) })
-    @RequestMapping(value = baseURL + "/processes/{id}/jobs/{jobID}/result",
+    @RequestMapping(value = baseURL + "/processes/{id}/jobs/{jobID}/results",
         produces = { "application/json" }, 
         method = RequestMethod.GET)
     ResponseEntity<?> getResult(@ApiParam(value = "The id of a process",required=true) @PathVariable("id") String id,@ApiParam(value = "The id of a job",required=true) @PathVariable("jobID") String jobID);

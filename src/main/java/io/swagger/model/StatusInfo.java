@@ -41,7 +41,7 @@ import javax.validation.constraints.*;
  * StatusInfo
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-04-15T08:44:25.353Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-08-09T10:44:01.066Z[GMT]")
 @JsonInclude(Include.NON_NULL)
 public class StatusInfo   {
   /**
@@ -81,6 +81,9 @@ public class StatusInfo   {
   @JsonProperty("status")
   private StatusEnum status = null;
 
+  @JsonProperty("jobID")
+  private String jobID = null;
+
   @JsonProperty("message")
   private String message = null;
 
@@ -89,7 +92,7 @@ public class StatusInfo   {
 
   @JsonProperty("links")
   @Valid
-  private List<Link> links = new ArrayList<Link>();
+  private List<Link> links = null;
 
   public StatusInfo status(StatusEnum status) {
     this.status = status;
@@ -109,6 +112,26 @@ public class StatusInfo   {
 
   public void setStatus(StatusEnum status) {
     this.status = status;
+  }
+
+  public StatusInfo jobID(String jobID) {
+    this.jobID = jobID;
+    return this;
+  }
+
+  /**
+   * Get jobID
+   * @return jobID
+  **/
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+  public String getJobID() {
+    return jobID;
+  }
+
+  public void setJobID(String jobID) {
+    this.jobID = jobID;
   }
 
   public StatusInfo message(String message) {
@@ -157,6 +180,9 @@ public class StatusInfo   {
   }
 
   public StatusInfo addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<Link>();
+    }
     this.links.add(linksItem);
     return this;
   }
@@ -165,8 +191,7 @@ public class StatusInfo   {
    * Get links
    * @return links
   **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
+  @ApiModelProperty(value = "")
   @Valid
   public List<Link> getLinks() {
     return links;
@@ -187,6 +212,7 @@ public class StatusInfo   {
     }
     StatusInfo statusInfo = (StatusInfo) o;
     return Objects.equals(this.status, statusInfo.status) &&
+        Objects.equals(this.jobID, statusInfo.jobID) &&
         Objects.equals(this.message, statusInfo.message) &&
         Objects.equals(this.progress, statusInfo.progress) &&
         Objects.equals(this.links, statusInfo.links);
@@ -194,7 +220,7 @@ public class StatusInfo   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, message, progress, links);
+    return Objects.hash(status, jobID, message, progress, links);
   }
 
   @Override
@@ -203,6 +229,7 @@ public class StatusInfo   {
     sb.append("class StatusInfo {\n");
     
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    jobID: ").append(toIndentedString(jobID)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");

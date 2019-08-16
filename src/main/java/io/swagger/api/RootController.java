@@ -82,7 +82,7 @@ public class RootController {
         
         link.setType("application/openapi+json;version=3.0");
         
-        link.setTitle("ththe API definition");
+        link.setTitle("the API definition");
         
         links.add(link);
         

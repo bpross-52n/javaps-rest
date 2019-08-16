@@ -43,6 +43,7 @@ import org.n52.faroe.Validation;
 import org.n52.faroe.annotation.Configurable;
 import org.n52.faroe.annotation.Setting;
 import org.n52.iceland.service.ServiceSettings;
+import org.n52.janmayen.http.HTTPStatus;
 import org.n52.javaps.engine.Engine;
 import org.n52.javaps.engine.EngineException;
 import org.n52.javaps.engine.InputDecodingException;
@@ -280,7 +281,7 @@ public class ProcessesApiController implements ProcessesApi {
             return ResponseEntity.ok(ResultSerializer.serializeResult(futureResult.get()));
         } catch (EngineException | InterruptedException | ExecutionException | IOException e) {
             log.error(e.getMessage());
-            return ResponseEntity.badRequest().body(ExceptionSerializer.serializeException("NoApplicableCode", "Internal server error."));
+            return exception(HTTPStatus.INTERNAL_SERVER_ERROR.getCode(), "Internal server error. " + e.getMessage() ,"NoApplicableCode");
         }
     }
 
@@ -302,7 +303,7 @@ public class ProcessesApiController implements ProcessesApi {
             
         } catch (EngineException e) {
             log.error(e.getMessage());
-            return ResponseEntity.badRequest().body(ExceptionSerializer.serializeException("NoApplicableCode", "Internal server error."));
+            return exception(HTTPStatus.INTERNAL_SERVER_ERROR.getCode(), "Internal server error." ,"NoApplicableCode");
         }
     }
     

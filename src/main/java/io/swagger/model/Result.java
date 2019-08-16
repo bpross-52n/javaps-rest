@@ -22,10 +22,6 @@
 package io.swagger.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.OutputInfo;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,37 +33,8 @@ import javax.validation.constraints.*;
  * Result
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
-public class Result   {
-  @JsonProperty("outputs")
-  @Valid
-  private List<OutputInfo> outputs = new ArrayList<OutputInfo>();
-
-  public Result outputs(List<OutputInfo> outputs) {
-    this.outputs = outputs;
-    return this;
-  }
-
-  public Result addOutputsItem(OutputInfo outputsItem) {
-    this.outputs.add(outputsItem);
-    return this;
-  }
-
-  /**
-   * Get outputs
-   * @return outputs
-  **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-  @Valid
-  public List<OutputInfo> getOutputs() {
-    return outputs;
-  }
-
-  public void setOutputs(List<OutputInfo> outputs) {
-    this.outputs = outputs;
-  }
-
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-08-09T10:54:01.801Z[GMT]")
+public class Result extends ArrayList<OutputInfo>  {
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -77,21 +44,19 @@ public class Result   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Result result = (Result) o;
-    return Objects.equals(this.outputs, result.outputs);
+    return true;
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(outputs);
+    return Objects.hash(super.hashCode());
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Result {\n");
-    
-    sb.append("    outputs: ").append(toIndentedString(outputs)).append("\n");
+    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
     sb.append("}");
     return sb.toString();
   }

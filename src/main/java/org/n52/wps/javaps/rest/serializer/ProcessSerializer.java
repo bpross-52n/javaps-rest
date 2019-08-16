@@ -107,7 +107,7 @@ public class ProcessSerializer {
         
         executeEndpointLink.setHref(serviceURL + serializedProcessOffering.getId() + "/jobs");
         
-        executeEndpointLink.setRel("canonical");
+        executeEndpointLink.setRel("execute");
         
         executeEndpointLink.setTitle("Execute endpoint");
         

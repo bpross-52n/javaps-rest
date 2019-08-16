@@ -48,8 +48,6 @@ public class ResultSerializer {
 
         Result serializedResult = new Result();
 
-        List<OutputInfo> outputs = new ArrayList<>();
-
         Iterator<ProcessData> processResults = result.getOutputs().iterator();
 
         while (processResults.hasNext()) {
@@ -84,10 +82,8 @@ public class ResultSerializer {
 
             output.setValue(valueType);
 
-            outputs.add(output);
+            serializedResult.add(output);
         }
-
-        serializedResult.setOutputs(outputs);
 
         return serializedResult;
 
