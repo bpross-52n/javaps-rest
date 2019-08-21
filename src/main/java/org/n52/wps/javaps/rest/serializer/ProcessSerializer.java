@@ -71,7 +71,6 @@ import io.swagger.model.LiteralDataType;
 import io.swagger.model.OutputDescription;
 import io.swagger.model.Process;
 import io.swagger.model.ProcessCollection;
-import io.swagger.model.ProcessOffering;
 import io.swagger.model.ProcessSummary;
 import io.swagger.model.Range;
 import io.swagger.model.Range.RangeClosureEnum;
@@ -97,9 +96,9 @@ public class ProcessSerializer {
     
     public ProcessSerializer() {}
     
-    public ProcessOffering serializeProcessOffering(org.n52.shetland.ogc.wps.ProcessOffering processOffering) {
+    public Process serializeProcessOffering(org.n52.shetland.ogc.wps.ProcessOffering processOffering) {
                 
-        io.swagger.model.ProcessOffering serializedProcessOffering = new io.swagger.model.ProcessOffering();
+        Process serializedProcessOffering = new Process();
                 
         addProcessSummary((ProcessSummary)serializedProcessOffering, processOffering);
         
@@ -558,7 +557,7 @@ public class ProcessSerializer {
           
           processDescriptionLink.setType("application/json");
           
-          processDescriptionLink.setRel("canonical");
+          processDescriptionLink.setRel("process description");
           
           processDescriptionLink.setTitle("Process description");
           

@@ -71,6 +71,10 @@ public class ExecuteDeserializer {
 
         List<OutputDefinition> outputDefinitions = new ArrayList<>();
 
+        if(outputs == null) {
+            return outputDefinitions;
+        }
+        
         for (Output output : outputs) {
             OutputDefinition outputDefinition = new OutputDefinition();
 
@@ -128,6 +132,10 @@ public class ExecuteDeserializer {
 
         List<ProcessData> processDataList = new ArrayList<>();
 
+        if(inputs == null) {
+            return processDataList;
+        }
+        
         for (Input input : inputs) {
 
             ProcessData processData = null;

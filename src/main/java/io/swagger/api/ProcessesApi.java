@@ -29,14 +29,12 @@ package io.swagger.api;
 import javax.validation.Valid;
 
 import org.n52.shetland.ogc.ows.exception.CodedException;
-import org.n52.shetland.ogc.ows.exception.InvalidParameterValueException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -47,9 +45,10 @@ import io.swagger.model.Exception;
 import io.swagger.model.Execute;
 import io.swagger.model.JobCollection;
 import io.swagger.model.ProcessCollection;
-import io.swagger.model.ProcessOffering;
 import io.swagger.model.Result;
 import io.swagger.model.StatusInfo;
+import io.swagger.model.Process;
+
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2018-11-08T09:36:12.450Z[GMT]")
 
 @Api(value = "processes", description = "the processes API")
@@ -76,18 +75,18 @@ public interface ProcessesApi {
         @ApiResponse(code = 200, message = "An error occured.", response = Exception.class) })
     @RequestMapping(value = baseURL + "/processes/{id}/jobs",
         produces = { "application/json" }, 
-        method = RequestMethod.GET)
-    
+        method = RequestMethod.GET)    
     ResponseEntity<?> getJobList(@ApiParam(value = "The id of a process.",required=true) @PathVariable("id") String id);
+    
     @RequestMapping(value = baseURL + "/processes/{id}/jobs",
             produces = { "text/html" }, 
             method = RequestMethod.GET)
     String getExecuteForm(@ApiParam(value = "The id of a process.",required=true) @PathVariable("id") String id, Model model);
 
 
-    @ApiOperation(value = "retrieve a process description", nickname = "getProcessDescription", notes = "", response = ProcessOffering.class, tags={ "ProcessDescription", })
+    @ApiOperation(value = "retrieve a process description", nickname = "getProcessDescription", notes = "", response = Process.class, tags={ "ProcessDescription", })
     @ApiResponses(value = { 
-        @ApiResponse(code = 200, message = "A process description.", response = ProcessOffering.class),
+        @ApiResponse(code = 200, message = "A process description.", response = Process.class),
         @ApiResponse(code = 404, message = "The process with id {id} does not exist.", response = Exception.class),
         @ApiResponse(code = 200, message = "An error occured.", response = Exception.class) })
     @RequestMapping(value = baseURL + "/processes/{id:.+}",

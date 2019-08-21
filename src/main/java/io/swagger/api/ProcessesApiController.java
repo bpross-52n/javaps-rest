@@ -267,7 +267,7 @@ public class ProcessesApiController implements ProcessesApi {
         
         if(!engine.hasJob(jobId)) {
             
-            return ResponseEntity.badRequest().body(ExceptionSerializer.serializeException("NoSuchJob", String.format("Job with id %s not found.", jobId)));
+            return ResponseEntity.status(404).body(ExceptionSerializer.serializeException("NoSuchJob", String.format("Job with id %s not found.", jobId)));
         }
             
         try {
@@ -292,7 +292,7 @@ public class ProcessesApiController implements ProcessesApi {
         
         if(!engine.hasJob(jobId)) {
             
-            return ResponseEntity.badRequest().body(ExceptionSerializer.serializeException("NoSuchJob", String.format("Job with id %s not found.", jobId)));
+            return ResponseEntity.status(404).body(ExceptionSerializer.serializeException("NoSuchJob", String.format("Job with id %s not found.", jobId)));
         }
         
         try {
