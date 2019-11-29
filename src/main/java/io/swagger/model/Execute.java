@@ -24,6 +24,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.Input;
@@ -38,7 +39,7 @@ import javax.validation.constraints.*;
  * Execute
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-08-21T13:32:59.398Z[GMT]")
 public class Execute   {
   @JsonProperty("inputs")
   @Valid
@@ -47,6 +48,74 @@ public class Execute   {
   @JsonProperty("outputs")
   @Valid
   private List<Output> outputs = new ArrayList<Output>();
+
+  /**
+   * Gets or Sets mode
+   */
+  public enum ModeEnum {
+    SYNC("sync"),
+    
+    ASYNC("async"),
+    
+    AUTO("auto");
+
+    private String value;
+
+    ModeEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ModeEnum fromValue(String text) {
+      for (ModeEnum b : ModeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+  @JsonProperty("mode")
+  private ModeEnum mode = null;
+
+  /**
+   * Gets or Sets response
+   */
+  public enum ResponseEnum {
+    RAW("raw"),
+    
+    DOCUMENT("document");
+
+    private String value;
+
+    ResponseEnum(String value) {
+      this.value = value;
+    }
+
+    @Override
+    @JsonValue
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ResponseEnum fromValue(String text) {
+      for (ResponseEnum b : ResponseEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+  @JsonProperty("response")
+  private ResponseEnum response = null;
 
   public Execute inputs(List<Input> inputs) {
     this.inputs = inputs;
@@ -100,6 +169,46 @@ public class Execute   {
     this.outputs = outputs;
   }
 
+  public Execute mode(ModeEnum mode) {
+    this.mode = mode;
+    return this;
+  }
+
+  /**
+   * Get mode
+   * @return mode
+  **/
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+  public ModeEnum getMode() {
+    return mode;
+  }
+
+  public void setMode(ModeEnum mode) {
+    this.mode = mode;
+  }
+
+  public Execute response(ResponseEnum response) {
+    this.response = response;
+    return this;
+  }
+
+  /**
+   * Get response
+   * @return response
+  **/
+  @ApiModelProperty(required = true, value = "")
+  @NotNull
+
+  public ResponseEnum getResponse() {
+    return response;
+  }
+
+  public void setResponse(ResponseEnum response) {
+    this.response = response;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -111,12 +220,14 @@ public class Execute   {
     }
     Execute execute = (Execute) o;
     return Objects.equals(this.inputs, execute.inputs) &&
-        Objects.equals(this.outputs, execute.outputs);
+        Objects.equals(this.outputs, execute.outputs) &&
+        Objects.equals(this.mode, execute.mode) &&
+        Objects.equals(this.response, execute.response);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(inputs, outputs);
+    return Objects.hash(inputs, outputs, mode, response);
   }
 
   @Override
@@ -126,6 +237,8 @@ public class Execute   {
     
     sb.append("    inputs: ").append(toIndentedString(inputs)).append("\n");
     sb.append("    outputs: ").append(toIndentedString(outputs)).append("\n");
+    sb.append("    mode: ").append(toIndentedString(mode)).append("\n");
+    sb.append("    response: ").append(toIndentedString(response)).append("\n");
     sb.append("}");
     return sb.toString();
   }

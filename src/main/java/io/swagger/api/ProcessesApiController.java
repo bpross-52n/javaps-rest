@@ -68,6 +68,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -135,6 +136,22 @@ public class ProcessesApiController implements ProcessesApi {
         
         boolean syncExecute = false;
         
+        try {
+            syncExecute = body.getMode().equals(Execute.ModeEnum.SYNC);
+        } catch (Exception e) {
+            log.error("Could not resolve execution mode: ", e);
+        }
+        
+        ResponseMode responseMode = ResponseMode.DOCUMENT;
+        
+        try {
+           if(body.getResponse().equals(Execute.ResponseEnum.RAW)) {
+               responseMode = ResponseMode.RAW;
+           }
+        } catch (Exception e) {
+            log.error("Could not resolve response mode. Falling back to DOCUMENT", e);
+        }
+        
         for (String parameterName : parameterMap.keySet()) {
             if(parameterName.equalsIgnoreCase("sync-execute")) {
                 String[] syncExecuteValues = parameterMap.get(parameterName);
@@ -168,7 +185,7 @@ public class ProcessesApiController implements ProcessesApi {
         JobId jobId = null;
         
         try {
-            jobId = engine.execute(owsCode, inputs, outputs, ResponseMode.DOCUMENT);
+            jobId = engine.execute(owsCode, inputs, outputs, responseMode);
         } catch (ProcessNotFoundException ex) {            
             return exception(404, String.format("The process with id '%s' does not exist.", owsCode.getValue()), "Invalidparameter");
 //            throw new InvalidParameterValueException("identifier", owsCode.getValue());
@@ -191,8 +208,18 @@ public class ProcessesApiController implements ProcessesApi {
                 
                 Result result = futureResult.get();
                 
-                return ResponseEntity.ok(ResultSerializer.serializeResult(result));
+                String mimeType = "";
                 
+                if(result.getResponseMode().equals(ResponseMode.RAW)) {
+                    mimeType = result.getOutputs().get(0).asValue().getFormat().getMimeType().orElse("application/json");
+                }
+                
+                HttpHeaders responseHeaders = new HttpHeaders();
+                responseHeaders.setContentType(MediaType.parseMediaType(mimeType));
+                
+                ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(ResultSerializer.serializeResult(result), responseHeaders, HttpStatus.OK);
+                
+                return responseEntity;                
             } catch (EngineException | InterruptedException | ExecutionException | IOException e) {
                 return exception(500, e.getMessage(), "NoApplicableCode");
             }
@@ -278,7 +305,20 @@ public class ProcessesApiController implements ProcessesApi {
                 return ResponseEntity.badRequest().body(ExceptionSerializer.serializeException("ResultNotReady", String.format("Job with id %s not ready.", jobId)));
             }
             
-            return ResponseEntity.ok(ResultSerializer.serializeResult(futureResult.get()));
+            Result result = futureResult.get();
+            
+            String mimeType = "";
+            
+            if(result.getResponseMode().equals(ResponseMode.RAW)) {
+                mimeType = result.getOutputs().get(0).asValue().getFormat().getMimeType().orElse("application/json");
+            }
+            
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.setContentType(MediaType.parseMediaType(mimeType));
+            
+            ResponseEntity<Object> responseEntity = new ResponseEntity<Object>(ResultSerializer.serializeResult(result), responseHeaders, HttpStatus.OK);
+                        
+            return responseEntity;
         } catch (EngineException | InterruptedException | ExecutionException | IOException e) {
             log.error(e.getMessage());
             return exception(HTTPStatus.INTERNAL_SERVER_ERROR.getCode(), "Internal server error. " + e.getMessage() ,"NoApplicableCode");
