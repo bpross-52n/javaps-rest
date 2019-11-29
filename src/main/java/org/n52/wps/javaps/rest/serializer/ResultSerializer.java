@@ -29,6 +29,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
+import org.n52.shetland.ogc.wps.ResponseMode;
 import org.n52.shetland.ogc.wps.data.ProcessData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,6 +37,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import io.swagger.model.Execute.ResponseEnum;
 import io.swagger.model.OutputInfo;
 import io.swagger.model.Result;
 import io.swagger.model.ValueType;
@@ -44,12 +46,22 @@ public class ResultSerializer {
 
     private static final Logger log = LoggerFactory.getLogger(ResultSerializer.class);
 
-    public static Result serializeResult(org.n52.shetland.ogc.wps.Result result) throws IOException {
+    public static Object serializeResult(org.n52.shetland.ogc.wps.Result result) throws IOException {
 
         Result serializedResult = new Result();
 
         Iterator<ProcessData> processResults = result.getOutputs().iterator();
 
+        boolean isRaw = result.getResponseMode().equals(ResponseMode.RAW);
+        
+        if(result.getOutputs().size() > 1 && isRaw) {
+            //TODO throw exception
+//            io.swagger.model.Exception exception = new io.swagger.model.Exception();
+//            exception.setCode(code);
+//            
+//            return exception;
+        }
+        
         while (processResults.hasNext()) {
             ProcessData processData = (ProcessData) processResults.next();
 
@@ -65,6 +77,9 @@ public class ResultSerializer {
 
                 try {
                     JsonNode object = new ObjectMapper().readTree(processData.asValue().getData());
+                    if(isRaw) {
+                        return object;
+                    }
                     valueType.setInlineValue(object);
                 } catch (Exception e) {
                     log.info("Could not read value as JSON node.");
@@ -74,6 +89,9 @@ public class ResultSerializer {
                         IOUtils.copy(processData.asValue().getData(), writer, encoding);
                     } catch (IOException e1) {
                         throw e;
+                    }
+                    if(isRaw) {
+                        return writer.toString();
                     }
                     valueType.setInlineValue(writer.toString());
                 }
