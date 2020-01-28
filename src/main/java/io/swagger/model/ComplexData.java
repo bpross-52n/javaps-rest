@@ -37,8 +37,8 @@ import javax.validation.constraints.*;
  * ComplexData
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
-public class ComplexData extends DataType  {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
+public class ComplexData extends DataType {
   @JsonProperty("value")
   private ValueType value = null;
 
@@ -52,10 +52,10 @@ public class ComplexData extends DataType  {
    * @return value
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+      @NotNull
 
-  @Valid
-  public ValueType getValue() {
+    @Valid
+    public ValueType getValue() {
     return value;
   }
 

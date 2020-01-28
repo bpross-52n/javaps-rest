@@ -35,7 +35,7 @@ import javax.validation.constraints.*;
  * DataType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class DataType   {
   @JsonProperty("format")
   private Format format = null;
@@ -50,9 +50,9 @@ public class DataType   {
    * @return format
   **/
   @ApiModelProperty(value = "")
-
-  @Valid
-  public Format getFormat() {
+  
+    @Valid
+    public Format getFormat() {
     return format;
   }
 

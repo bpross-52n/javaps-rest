@@ -41,7 +41,7 @@ import javax.validation.constraints.*;
  * ProcessSummary
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class ProcessSummary extends DescriptionType  {
   @JsonProperty("id")
   private String id = null;
@@ -71,9 +71,9 @@ public class ProcessSummary extends DescriptionType  {
    * @return id
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+      @NotNull
 
-  public String getId() {
+    public String getId() {
     return id;
   }
 
@@ -91,9 +91,9 @@ public class ProcessSummary extends DescriptionType  {
    * @return version
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+      @NotNull
 
-  public String getVersion() {
+    public String getVersion() {
     return version;
   }
 
@@ -119,8 +119,8 @@ public class ProcessSummary extends DescriptionType  {
    * @return jobControlOptions
   **/
   @ApiModelProperty(value = "")
-  @Valid
-  public List<JobControlOptions> getJobControlOptions() {
+      @Valid
+    public List<JobControlOptions> getJobControlOptions() {
     return jobControlOptions;
   }
 
@@ -146,8 +146,8 @@ public class ProcessSummary extends DescriptionType  {
    * @return outputTransmission
   **/
   @ApiModelProperty(value = "")
-  @Valid
-  public List<TransmissionMode> getOutputTransmission() {
+      @Valid
+    public List<TransmissionMode> getOutputTransmission() {
     return outputTransmission;
   }
 
@@ -173,8 +173,8 @@ public class ProcessSummary extends DescriptionType  {
    * @return links
   **/
   @ApiModelProperty(value = "")
-  @Valid
-  public List<Link> getLinks() {
+      @Valid
+    public List<Link> getLinks() {
     return links;
   }
 

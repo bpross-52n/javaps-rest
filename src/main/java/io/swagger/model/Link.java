@@ -23,10 +23,7 @@ package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
@@ -37,8 +34,7 @@ import javax.validation.constraints.*;
  * Link
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T10:04:44.552Z[GMT]")
-@JsonInclude(Include.NON_NULL)
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class Link   {
   @JsonProperty("href")
   private String href = null;
@@ -65,9 +61,9 @@ public class Link   {
    * @return href
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+      @NotNull
 
-  public String getHref() {
+    public String getHref() {
     return href;
   }
 
@@ -85,8 +81,8 @@ public class Link   {
    * @return rel
   **/
   @ApiModelProperty(example = "service", value = "")
-
-  public String getRel() {
+  
+    public String getRel() {
     return rel;
   }
 
@@ -104,8 +100,8 @@ public class Link   {
    * @return type
   **/
   @ApiModelProperty(example = "application/json", value = "")
-
-  public String getType() {
+  
+    public String getType() {
     return type;
   }
 
@@ -123,8 +119,8 @@ public class Link   {
    * @return hreflang
   **/
   @ApiModelProperty(example = "en", value = "")
-
-  public String getHreflang() {
+  
+    public String getHreflang() {
     return hreflang;
   }
 
@@ -142,8 +138,8 @@ public class Link   {
    * @return title
   **/
   @ApiModelProperty(value = "")
-
-  public String getTitle() {
+  
+    public String getTitle() {
     return title;
   }
 

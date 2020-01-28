@@ -34,8 +34,8 @@ import javax.validation.constraints.*;
  * ReferenceValue
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
-public class ReferenceValue   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
+public class ReferenceValue implements ValueType {
   @JsonProperty("href")
   private String href = null;
 
@@ -48,9 +48,10 @@ public class ReferenceValue   {
    * Get href
    * @return href
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
+      @NotNull
 
-  public String getHref() {
+    public String getHref() {
     return href;
   }
 

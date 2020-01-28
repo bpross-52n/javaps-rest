@@ -37,8 +37,8 @@ import javax.validation.constraints.*;
  * ComplexDataType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
-public class ComplexDataType   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
+public class ComplexDataType {
   @JsonProperty("formats")
   @Valid
   private List<FormatDescription> formats = new ArrayList<FormatDescription>();
@@ -58,9 +58,9 @@ public class ComplexDataType   {
    * @return formats
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
-  @Valid
-  public List<FormatDescription> getFormats() {
+      @NotNull
+    @Valid
+    public List<FormatDescription> getFormats() {
     return formats;
   }
 

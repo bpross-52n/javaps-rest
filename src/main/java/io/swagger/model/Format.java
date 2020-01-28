@@ -23,10 +23,7 @@ package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
@@ -37,8 +34,7 @@ import javax.validation.constraints.*;
  * Format
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
-@JsonInclude(Include.NON_NULL)
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class Format   {
   @JsonProperty("mimeType")
   private String mimeType = null;
@@ -59,9 +55,9 @@ public class Format   {
    * @return mimeType
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+      @NotNull
 
-  public String getMimeType() {
+    public String getMimeType() {
     return mimeType;
   }
 
@@ -79,8 +75,8 @@ public class Format   {
    * @return schema
   **/
   @ApiModelProperty(value = "")
-
-  public String getSchema() {
+  
+    public String getSchema() {
     return schema;
   }
 
@@ -98,8 +94,8 @@ public class Format   {
    * @return encoding
   **/
   @ApiModelProperty(value = "")
-
-  public String getEncoding() {
+  
+    public String getEncoding() {
     return encoding;
   }
 

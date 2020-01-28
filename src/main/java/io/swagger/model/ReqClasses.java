@@ -36,7 +36,7 @@ import javax.validation.constraints.*;
  * ReqClasses
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class ReqClasses   {
   @JsonProperty("conformsTo")
   @Valid
@@ -57,9 +57,9 @@ public class ReqClasses   {
    * @return conformsTo
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+      @NotNull
 
-  public List<String> getConformsTo() {
+    public List<String> getConformsTo() {
     return conformsTo;
   }
 

@@ -21,18 +21,16 @@
  */
 package io.swagger.model;
 
-import java.util.Objects;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Objects;
+
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
  * AllowedValues
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class AllowedValues extends ArrayList<Object>  {
 
   @Override

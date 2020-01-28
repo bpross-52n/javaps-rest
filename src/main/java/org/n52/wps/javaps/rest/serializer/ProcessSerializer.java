@@ -65,6 +65,7 @@ import io.swagger.model.FormatDescription;
 import io.swagger.model.InputDescription;
 import io.swagger.model.JobControlOptions;
 import io.swagger.model.Link;
+import io.swagger.model.LiteralDataDataType;
 import io.swagger.model.LiteralDataDomain;
 import io.swagger.model.LiteralDataDomainDataType;
 import io.swagger.model.LiteralDataType;
@@ -376,7 +377,7 @@ public class ProcessSerializer {
 
         try {
             
-            LiteralDataDomainDataType dataType = new LiteralDataDomainDataType();
+            LiteralDataDataType dataType = new LiteralDataDataType();
             
             dataType.setName(defaultLiteralDataDomain.getDataType().get().getValue().get());
             

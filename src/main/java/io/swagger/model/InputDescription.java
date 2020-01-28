@@ -22,20 +22,18 @@
 package io.swagger.model;
 
 import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import io.swagger.model.DataDescriptionType;
+
 import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * InputDescription
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class InputDescription extends DataDescriptionType  {
   @JsonProperty("input")
   private Object input = null;
@@ -44,7 +42,7 @@ public class InputDescription extends DataDescriptionType  {
   private Integer minOccurs = null;
 
   @JsonProperty("maxOccurs")
-  private Integer maxOccurs = null;
+  private Object maxOccurs = null;
 
   public InputDescription input(Object input) {
     this.input = input;
@@ -56,8 +54,8 @@ public class InputDescription extends DataDescriptionType  {
    * @return input
   **/
   @ApiModelProperty(value = "")
-
-  public Object getInput() {
+  
+    public Object getInput() {
     return input;
   }
 
@@ -75,8 +73,8 @@ public class InputDescription extends DataDescriptionType  {
    * @return minOccurs
   **/
   @ApiModelProperty(value = "")
-
-  public Integer getMinOccurs() {
+  
+    public Integer getMinOccurs() {
     return minOccurs;
   }
 
@@ -84,7 +82,7 @@ public class InputDescription extends DataDescriptionType  {
     this.minOccurs = minOccurs;
   }
 
-  public InputDescription maxOccurs(Integer maxOccurs) {
+  public InputDescription maxOccurs(Object maxOccurs) {
     this.maxOccurs = maxOccurs;
     return this;
   }
@@ -94,12 +92,12 @@ public class InputDescription extends DataDescriptionType  {
    * @return maxOccurs
   **/
   @ApiModelProperty(value = "")
-
-  public Integer getMaxOccurs() {
+  
+    public Object getMaxOccurs() {
     return maxOccurs;
   }
 
-  public void setMaxOccurs(Integer maxOccurs) {
+  public void setMaxOccurs(Object maxOccurs) {
     this.maxOccurs = maxOccurs;
   }
 

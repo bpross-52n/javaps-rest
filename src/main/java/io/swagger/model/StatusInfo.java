@@ -24,10 +24,7 @@ package io.swagger.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.Link;
@@ -41,9 +38,11 @@ import javax.validation.constraints.*;
  * StatusInfo
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-08-09T10:44:01.066Z[GMT]")
-@JsonInclude(Include.NON_NULL)
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class StatusInfo   {
+  @JsonProperty("jobID")
+  private String jobID = null;
+
   /**
    * Gets or Sets status
    */
@@ -81,9 +80,6 @@ public class StatusInfo   {
   @JsonProperty("status")
   private StatusEnum status = null;
 
-  @JsonProperty("jobID")
-  private String jobID = null;
-
   @JsonProperty("message")
   private String message = null;
 
@@ -93,26 +89,6 @@ public class StatusInfo   {
   @JsonProperty("links")
   @Valid
   private List<Link> links = null;
-
-  public StatusInfo status(StatusEnum status) {
-    this.status = status;
-    return this;
-  }
-
-  /**
-   * Get status
-   * @return status
-  **/
-  @ApiModelProperty(required = true, value = "")
-  @NotNull
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
 
   public StatusInfo jobID(String jobID) {
     this.jobID = jobID;
@@ -124,14 +100,34 @@ public class StatusInfo   {
    * @return jobID
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+      @NotNull
 
-  public String getJobID() {
+    public String getJobID() {
     return jobID;
   }
 
   public void setJobID(String jobID) {
     this.jobID = jobID;
+  }
+
+  public StatusInfo status(StatusEnum status) {
+    this.status = status;
+    return this;
+  }
+
+  /**
+   * Get status
+   * @return status
+  **/
+  @ApiModelProperty(required = true, value = "")
+      @NotNull
+
+    public StatusEnum getStatus() {
+    return status;
+  }
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
   }
 
   public StatusInfo message(String message) {
@@ -144,8 +140,8 @@ public class StatusInfo   {
    * @return message
   **/
   @ApiModelProperty(value = "")
-
-  public String getMessage() {
+  
+    public String getMessage() {
     return message;
   }
 
@@ -165,8 +161,8 @@ public class StatusInfo   {
    * @return progress
   **/
   @ApiModelProperty(value = "")
-
-@Min(0) @Max(100)   public Integer getProgress() {
+  
+  @Min(0) @Max(100)   public Integer getProgress() {
     return progress;
   }
 
@@ -192,8 +188,8 @@ public class StatusInfo   {
    * @return links
   **/
   @ApiModelProperty(value = "")
-  @Valid
-  public List<Link> getLinks() {
+      @Valid
+    public List<Link> getLinks() {
     return links;
   }
 
@@ -211,8 +207,8 @@ public class StatusInfo   {
       return false;
     }
     StatusInfo statusInfo = (StatusInfo) o;
-    return Objects.equals(this.status, statusInfo.status) &&
-        Objects.equals(this.jobID, statusInfo.jobID) &&
+    return Objects.equals(this.jobID, statusInfo.jobID) &&
+        Objects.equals(this.status, statusInfo.status) &&
         Objects.equals(this.message, statusInfo.message) &&
         Objects.equals(this.progress, statusInfo.progress) &&
         Objects.equals(this.links, statusInfo.links);
@@ -220,7 +216,7 @@ public class StatusInfo   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(status, jobID, message, progress, links);
+    return Objects.hash(jobID, status, message, progress, links);
   }
 
   @Override
@@ -228,8 +224,8 @@ public class StatusInfo   {
     StringBuilder sb = new StringBuilder();
     sb.append("class StatusInfo {\n");
     
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    jobID: ").append(toIndentedString(jobID)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    progress: ").append(toIndentedString(progress)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");

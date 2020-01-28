@@ -80,6 +80,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import io.swagger.annotations.ApiParam;
 import io.swagger.model.Execute;
 import io.swagger.model.JobCollection;
+import io.swagger.model.JobInfo;
 import io.swagger.model.ProcessCollection;
 import io.swagger.model.StatusInfo;
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2018-11-08T09:36:12.450Z[GMT]")
@@ -208,7 +209,7 @@ public class ProcessesApiController implements ProcessesApi {
                 
                 Result result = futureResult.get();
                 
-                String mimeType = "";
+                String mimeType = "application/json";
                 
                 if(result.getResponseMode().equals(ResponseMode.RAW)) {
                     mimeType = result.getOutputs().get(0).asValue().getFormat().getMimeType().orElse("application/json");
@@ -236,10 +237,18 @@ public class ProcessesApiController implements ProcessesApi {
         
         JobCollection jobCollection = new JobCollection();
         
-        ArrayList<String> jobList = (ArrayList<String>)jobCollection;
-        
         for (String jobID : values) {
-            jobList.add(jobID);
+            JobId jobId = new JobId(jobID);
+            JobInfo jobsItem = new JobInfo();
+            jobsItem.setId(jobID);
+            try {
+                org.n52.shetland.ogc.wps.StatusInfo status = engine.getStatus(jobId);
+                jobsItem.setInfos(statusInfoSerializer.serialize(status, id, jobID));
+            } catch (EngineException e) {
+                log.error(e.getMessage());
+            }
+            
+            jobCollection.addJobsItem(jobsItem);
         }
         
         return ResponseEntity.ok(jobCollection);
@@ -307,7 +316,7 @@ public class ProcessesApiController implements ProcessesApi {
             
             Result result = futureResult.get();
             
-            String mimeType = "";
+            String mimeType = "application/json";
             
             if(result.getResponseMode().equals(ResponseMode.RAW)) {
                 mimeType = result.getOutputs().get(0).asValue().getFormat().getMimeType().orElse("application/json");

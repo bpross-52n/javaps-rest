@@ -37,11 +37,11 @@ import javax.validation.constraints.*;
  * LiteralDataType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
-public class LiteralDataType   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
+public class LiteralDataType {
   @JsonProperty("literalDataDomains")
   @Valid
-  private List<LiteralDataDomain> literalDataDomains = null;
+  private List<LiteralDataDomain> literalDataDomains = new ArrayList<LiteralDataDomain>();
 
   public LiteralDataType literalDataDomains(List<LiteralDataDomain> literalDataDomains) {
     this.literalDataDomains = literalDataDomains;
@@ -49,9 +49,6 @@ public class LiteralDataType   {
   }
 
   public LiteralDataType addLiteralDataDomainsItem(LiteralDataDomain literalDataDomainsItem) {
-    if (this.literalDataDomains == null) {
-      this.literalDataDomains = new ArrayList<LiteralDataDomain>();
-    }
     this.literalDataDomains.add(literalDataDomainsItem);
     return this;
   }
@@ -60,9 +57,10 @@ public class LiteralDataType   {
    * Get literalDataDomains
    * @return literalDataDomains
   **/
-  @ApiModelProperty(value = "")
-  @Valid
-  public List<LiteralDataDomain> getLiteralDataDomains() {
+  @ApiModelProperty(required = true, value = "")
+      @NotNull
+    @Valid
+    public List<LiteralDataDomain> getLiteralDataDomains() {
     return literalDataDomains;
   }
 

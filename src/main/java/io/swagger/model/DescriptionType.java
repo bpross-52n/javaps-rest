@@ -23,10 +23,7 @@ package io.swagger.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonInclude;
-
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.model.Metadata;
@@ -40,8 +37,7 @@ import javax.validation.constraints.*;
  * DescriptionType
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
-@JsonInclude(Include.NON_NULL)
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class DescriptionType   {
   @JsonProperty("id")
   private String id = null;
@@ -60,6 +56,9 @@ public class DescriptionType   {
   @Valid
   private List<Metadata> metadata = null;
 
+  @JsonProperty("additionalParameters")
+  private Object additionalParameters = null;
+
   public DescriptionType id(String id) {
     this.id = id;
     return this;
@@ -70,9 +69,9 @@ public class DescriptionType   {
    * @return id
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+      @NotNull
 
-  public String getId() {
+    public String getId() {
     return id;
   }
 
@@ -90,8 +89,8 @@ public class DescriptionType   {
    * @return title
   **/
   @ApiModelProperty(value = "")
-
-  public String getTitle() {
+  
+    public String getTitle() {
     return title;
   }
 
@@ -109,8 +108,8 @@ public class DescriptionType   {
    * @return description
   **/
   @ApiModelProperty(value = "")
-
-  public String getDescription() {
+  
+    public String getDescription() {
     return description;
   }
 
@@ -136,8 +135,8 @@ public class DescriptionType   {
    * @return keywords
   **/
   @ApiModelProperty(value = "")
-
-  public List<String> getKeywords() {
+  
+    public List<String> getKeywords() {
     return keywords;
   }
 
@@ -163,13 +162,32 @@ public class DescriptionType   {
    * @return metadata
   **/
   @ApiModelProperty(value = "")
-  @Valid
-  public List<Metadata> getMetadata() {
+      @Valid
+    public List<Metadata> getMetadata() {
     return metadata;
   }
 
   public void setMetadata(List<Metadata> metadata) {
     this.metadata = metadata;
+  }
+
+  public DescriptionType additionalParameters(Object additionalParameters) {
+    this.additionalParameters = additionalParameters;
+    return this;
+  }
+
+  /**
+   * Get additionalParameters
+   * @return additionalParameters
+  **/
+  @ApiModelProperty(value = "")
+  
+    public Object getAdditionalParameters() {
+    return additionalParameters;
+  }
+
+  public void setAdditionalParameters(Object additionalParameters) {
+    this.additionalParameters = additionalParameters;
   }
 
 
@@ -186,12 +204,13 @@ public class DescriptionType   {
         Objects.equals(this.title, descriptionType.title) &&
         Objects.equals(this.description, descriptionType.description) &&
         Objects.equals(this.keywords, descriptionType.keywords) &&
-        Objects.equals(this.metadata, descriptionType.metadata);
+        Objects.equals(this.metadata, descriptionType.metadata) &&
+        Objects.equals(this.additionalParameters, descriptionType.additionalParameters);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, title, description, keywords, metadata);
+    return Objects.hash(id, title, description, keywords, metadata, additionalParameters);
   }
 
   @Override
@@ -204,6 +223,7 @@ public class DescriptionType   {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    keywords: ").append(toIndentedString(keywords)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("    additionalParameters: ").append(toIndentedString(additionalParameters)).append("\n");
     sb.append("}");
     return sb.toString();
   }

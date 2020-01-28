@@ -22,19 +22,65 @@
 package io.swagger.model;
 
 import java.util.Objects;
-import io.swagger.model.OutputInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Result
+ * LiteralDataDataType
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
-public class Result extends ArrayList<OutputInfo>  {
+public class LiteralDataDataType   {
+  @JsonProperty("name")
+  private String name = null;
+
+  @JsonProperty("reference")
+  private String reference = null;
+
+  public LiteralDataDataType name(String name) {
+    this.name = name;
+    return this;
+  }
+
+  /**
+   * Get name
+   * @return name
+  **/
+  @ApiModelProperty(required = true, value = "")
+      @NotNull
+
+    public String getName() {
+    return name;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public LiteralDataDataType reference(String reference) {
+    this.reference = reference;
+    return this;
+  }
+
+  /**
+   * Get reference
+   * @return reference
+  **/
+  @ApiModelProperty(value = "")
+  
+    public String getReference() {
+    return reference;
+  }
+
+  public void setReference(String reference) {
+    this.reference = reference;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -44,19 +90,23 @@ public class Result extends ArrayList<OutputInfo>  {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    LiteralDataDataType literalDataDataType = (LiteralDataDataType) o;
+    return Objects.equals(this.name, literalDataDataType.name) &&
+        Objects.equals(this.reference, literalDataDataType.reference);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(name, reference);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Result {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("class LiteralDataDataType {\n");
+    
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    reference: ").append(toIndentedString(reference)).append("\n");
     sb.append("}");
     return sb.toString();
   }

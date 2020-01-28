@@ -22,19 +22,67 @@
 package io.swagger.model;
 
 import java.util.Objects;
-import io.swagger.model.OutputInfo;
-import java.util.ArrayList;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.model.StatusInfo;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 
 /**
- * Result
+ * JobInfo
  */
 @Validated
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
-public class Result extends ArrayList<OutputInfo>  {
+public class JobInfo   {
+  @JsonProperty("id")
+  private String id = null;
+
+  @JsonProperty("infos")
+  private StatusInfo infos = null;
+
+  public JobInfo id(String id) {
+    this.id = id;
+    return this;
+  }
+
+  /**
+   * Get id
+   * @return id
+  **/
+  @ApiModelProperty(required = true, value = "")
+      @NotNull
+
+    public String getId() {
+    return id;
+  }
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+  public JobInfo infos(StatusInfo infos) {
+    this.infos = infos;
+    return this;
+  }
+
+  /**
+   * Get infos
+   * @return infos
+  **/
+  @ApiModelProperty(value = "")
+  
+    @Valid
+    public StatusInfo getInfos() {
+    return infos;
+  }
+
+  public void setInfos(StatusInfo infos) {
+    this.infos = infos;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -44,19 +92,23 @@ public class Result extends ArrayList<OutputInfo>  {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    return true;
+    JobInfo jobInfo = (JobInfo) o;
+    return Objects.equals(this.id, jobInfo.id) &&
+        Objects.equals(this.infos, jobInfo.infos);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(super.hashCode());
+    return Objects.hash(id, infos);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Result {\n");
-    sb.append("    ").append(toIndentedString(super.toString())).append("\n");
+    sb.append("class JobInfo {\n");
+    
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    infos: ").append(toIndentedString(infos)).append("\n");
     sb.append("}");
     return sb.toString();
   }

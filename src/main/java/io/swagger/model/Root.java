@@ -37,7 +37,7 @@ import javax.validation.constraints.*;
  * Root
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class Root   {
   @JsonProperty("links")
   @Valid
@@ -58,9 +58,9 @@ public class Root   {
    * @return links
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
-  @Valid
-  public List<Link> getLinks() {
+      @NotNull
+    @Valid
+    public List<Link> getLinks() {
     return links;
   }
 

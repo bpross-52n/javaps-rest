@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.model.LiteralDataDataType;
 import org.springframework.validation.annotation.Validated;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
@@ -34,16 +35,16 @@ import javax.validation.constraints.*;
  * LiteralData
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
-public class LiteralData   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
+public class LiteralData {
   @JsonProperty("value")
   private String value = null;
 
   @JsonProperty("dataType")
-  private String dataType = null;
+  private LiteralDataDataType dataType = null;
 
   @JsonProperty("uom")
-  private String uom = null;
+  private LiteralDataDataType uom = null;
 
   public LiteralData value(String value) {
     this.value = value;
@@ -55,8 +56,8 @@ public class LiteralData   {
    * @return value
   **/
   @ApiModelProperty(value = "")
-
-  public String getValue() {
+  
+    public String getValue() {
     return value;
   }
 
@@ -64,7 +65,7 @@ public class LiteralData   {
     this.value = value;
   }
 
-  public LiteralData dataType(String dataType) {
+  public LiteralData dataType(LiteralDataDataType dataType) {
     this.dataType = dataType;
     return this;
   }
@@ -74,16 +75,17 @@ public class LiteralData   {
    * @return dataType
   **/
   @ApiModelProperty(value = "")
-
-  public String getDataType() {
+  
+    @Valid
+    public LiteralDataDataType getDataType() {
     return dataType;
   }
 
-  public void setDataType(String dataType) {
+  public void setDataType(LiteralDataDataType dataType) {
     this.dataType = dataType;
   }
 
-  public LiteralData uom(String uom) {
+  public LiteralData uom(LiteralDataDataType uom) {
     this.uom = uom;
     return this;
   }
@@ -93,12 +95,13 @@ public class LiteralData   {
    * @return uom
   **/
   @ApiModelProperty(value = "")
-
-  public String getUom() {
+  
+    @Valid
+    public LiteralDataDataType getUom() {
     return uom;
   }
 
-  public void setUom(String uom) {
+  public void setUom(LiteralDataDataType uom) {
     this.uom = uom;
   }
 

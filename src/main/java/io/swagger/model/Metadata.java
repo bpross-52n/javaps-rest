@@ -34,13 +34,35 @@ import javax.validation.constraints.*;
  * Metadata
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class Metadata   {
+  @JsonProperty("title")
+  private String title = null;
+
   @JsonProperty("role")
   private String role = null;
 
   @JsonProperty("href")
   private String href = null;
+
+  public Metadata title(String title) {
+    this.title = title;
+    return this;
+  }
+
+  /**
+   * Get title
+   * @return title
+  **/
+  @ApiModelProperty(value = "")
+  
+    public String getTitle() {
+    return title;
+  }
+
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
   public Metadata role(String role) {
     this.role = role;
@@ -52,8 +74,8 @@ public class Metadata   {
    * @return role
   **/
   @ApiModelProperty(value = "")
-
-  public String getRole() {
+  
+    public String getRole() {
     return role;
   }
 
@@ -71,8 +93,8 @@ public class Metadata   {
    * @return href
   **/
   @ApiModelProperty(value = "")
-
-  public String getHref() {
+  
+    public String getHref() {
     return href;
   }
 
@@ -90,13 +112,14 @@ public class Metadata   {
       return false;
     }
     Metadata metadata = (Metadata) o;
-    return Objects.equals(this.role, metadata.role) &&
+    return Objects.equals(this.title, metadata.title) &&
+        Objects.equals(this.role, metadata.role) &&
         Objects.equals(this.href, metadata.href);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(role, href);
+    return Objects.hash(title, role, href);
   }
 
   @Override
@@ -104,6 +127,7 @@ public class Metadata   {
     StringBuilder sb = new StringBuilder();
     sb.append("class Metadata {\n");
     
+    sb.append("    title: ").append(toIndentedString(title)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("}");

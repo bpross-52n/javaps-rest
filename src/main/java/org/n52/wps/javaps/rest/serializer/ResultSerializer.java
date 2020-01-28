@@ -24,9 +24,7 @@ package org.n52.wps.javaps.rest.serializer;
 import java.io.IOException;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.n52.shetland.ogc.wps.ResponseMode;
@@ -37,8 +35,9 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import io.swagger.model.Execute.ResponseEnum;
+import io.swagger.model.InlineValue;
 import io.swagger.model.OutputInfo;
+import io.swagger.model.ReferenceValue;
 import io.swagger.model.Result;
 import io.swagger.model.ValueType;
 
@@ -69,10 +68,15 @@ public class ResultSerializer {
 
             output.setId(processData.getId().getValue());
 
-            ValueType valueType = new ValueType();
+            ValueType valueType = null;
 
             if (processData.isReference()) {
-                valueType.setHref(processData.asReference().getURI().toString());
+            	
+            	ReferenceValue referenceValue = new ReferenceValue();
+            	
+            	referenceValue.setHref(processData.asReference().getURI().toString());
+            	
+                valueType = referenceValue;
             } else if (processData.isValue()) {
 
                 try {
@@ -80,7 +84,12 @@ public class ResultSerializer {
                     if(isRaw) {
                         return object;
                     }
-                    valueType.setInlineValue(object);
+                    
+                    InlineValue inlineValue = new InlineValue();
+                    
+                    inlineValue.setInlineValue(object);
+                    
+                    valueType = inlineValue;
                 } catch (Exception e) {
                     log.info("Could not read value as JSON node.");
                     StringWriter writer = new StringWriter();
@@ -93,9 +102,13 @@ public class ResultSerializer {
                     if(isRaw) {
                         return writer.toString();
                     }
-                    valueType.setInlineValue(writer.toString());
+                    
+                    InlineValue inlineValue = new InlineValue();
+                    
+                    inlineValue.setInlineValue(writer.toString());
+                    
+                    valueType = inlineValue;
                 }
-
             }
 
             output.setValue(valueType);

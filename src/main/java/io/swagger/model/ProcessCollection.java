@@ -33,7 +33,7 @@ import javax.validation.constraints.*;
  * ProcessCollection
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-06-20T18:26:34.141Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class ProcessCollection extends ArrayList<ProcessSummary>  {
 
   @Override

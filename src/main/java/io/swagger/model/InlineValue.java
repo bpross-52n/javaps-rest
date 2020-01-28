@@ -34,8 +34,8 @@ import javax.validation.constraints.*;
  * InlineValue
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
-public class InlineValue   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
+public class InlineValue implements ValueType {
   @JsonProperty("inlineValue")
   private Object inlineValue = null;
 
@@ -48,9 +48,10 @@ public class InlineValue   {
    * Get inlineValue
    * @return inlineValue
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(required = true, value = "")
+      @NotNull
 
-  public Object getInlineValue() {
+    public Object getInlineValue() {
     return inlineValue;
   }
 

@@ -39,7 +39,7 @@ import javax.validation.constraints.*;
  * Execute
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-08-21T13:32:59.398Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class Execute   {
   @JsonProperty("inputs")
   @Valid
@@ -135,8 +135,8 @@ public class Execute   {
    * @return inputs
   **/
   @ApiModelProperty(value = "")
-  @Valid
-  public List<Input> getInputs() {
+      @Valid
+    public List<Input> getInputs() {
     return inputs;
   }
 
@@ -159,9 +159,9 @@ public class Execute   {
    * @return outputs
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
-  @Valid
-  public List<Output> getOutputs() {
+      @NotNull
+    @Valid
+    public List<Output> getOutputs() {
     return outputs;
   }
 
@@ -179,9 +179,9 @@ public class Execute   {
    * @return mode
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+      @NotNull
 
-  public ModeEnum getMode() {
+    public ModeEnum getMode() {
     return mode;
   }
 
@@ -199,9 +199,9 @@ public class Execute   {
    * @return response
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
+      @NotNull
 
-  public ResponseEnum getResponse() {
+    public ResponseEnum getResponse() {
     return response;
   }
 

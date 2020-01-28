@@ -37,8 +37,8 @@ import javax.validation.constraints.*;
  * BoundingBoxData
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-06-20T11:06:03.350Z[GMT]")
-public class BoundingBoxData   {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
+public class BoundingBoxData {
   @JsonProperty("crs")
   private String crs = null;
 
@@ -56,8 +56,8 @@ public class BoundingBoxData   {
    * @return crs
   **/
   @ApiModelProperty(value = "")
-
-  public String getCrs() {
+  
+    public String getCrs() {
     return crs;
   }
 
@@ -80,9 +80,9 @@ public class BoundingBoxData   {
    * @return bbox
   **/
   @ApiModelProperty(required = true, value = "")
-  @NotNull
-  @Valid
-@Size(min=4,max=6)   public List<BigDecimal> getBbox() {
+      @NotNull
+    @Valid
+  @Size(min=4,max=6)   public List<BigDecimal> getBbox() {
     return bbox;
   }
 

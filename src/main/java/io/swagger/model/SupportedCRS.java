@@ -34,7 +34,7 @@ import javax.validation.constraints.*;
  * SupportedCRS
  */
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2019-03-28T09:55:34.783Z[GMT]")
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2020-01-28T10:33:35.029Z[GMT]")
 public class SupportedCRS   {
   @JsonProperty("crs")
   private String crs = null;
@@ -52,8 +52,8 @@ public class SupportedCRS   {
    * @return crs
   **/
   @ApiModelProperty(value = "")
-
-  public String getCrs() {
+  
+    public String getCrs() {
     return crs;
   }
 
@@ -71,8 +71,8 @@ public class SupportedCRS   {
    * @return _default
   **/
   @ApiModelProperty(value = "")
-
-  public Boolean isDefault() {
+  
+    public Boolean isDefault() {
     return _default;
   }
 
